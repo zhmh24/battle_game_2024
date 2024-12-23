@@ -8,13 +8,13 @@
 #include "battle_game/core/particles/particles.h"
 #include "battle_game/core/player.h"
 #include "battle_game/core/unit.h"
-#include "battle_game/core/units/units.h"
 #include "battle_game/graphics/graphics.h"
 #include "functional"
 #include "grassland/grassland.h"
 #include "map"
 #include "queue"
 #include "random"
+#include "units.h"
 #include "vector"
 
 namespace battle_game {
@@ -32,9 +32,6 @@ class GameCore {
   void GeneratePrimaryUnitList();
   uint32_t AllocatePrimaryUnit(uint32_t player_id);
   [[nodiscard]] std::vector<const char *> GetSelectableUnitList() const;
-  [[nodiscard]] const std::vector<bool> &GetSelectableUnitListSkill() const {
-    return selectable_unit_list_skill_;
-  }
 
   void Update();
   void Render();
@@ -215,7 +212,6 @@ class GameCore {
   std::vector<std::function<uint32_t(uint32_t)>>
       primary_unit_allocation_functions_;
   std::vector<std::string> selectable_unit_list_;
-  std::vector<bool> selectable_unit_list_skill_;
 };
 
 template <class BulletType, class... Args>
