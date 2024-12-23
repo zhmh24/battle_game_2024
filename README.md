@@ -18,6 +18,27 @@ Project 2 的难度并不高，希望大家能在期末结束之后以一个放�
 这个项目的目标是制作一款内容丰富的对战小游戏。
 同学们可以自由地发挥自己的创造力，设计各种奇妙有趣的游戏内容，添加绚丽的视觉效果。
 
+## 构建
+
+在拉取项目仓库时，你需要使用 `--recursive` 参数以拉取项目的子模块。
+
+由于项目依赖 vcpkg，你还需要在某个你选定的非本仓库目录下的位置拉取 vcpkg 仓库。
+
+```bash
+git clone https://github.com/microsoft/vcpkg.git
+```
+
+在进行 CMake 配置阶段，你需要使用`-DCMAKE_TOOLCHAIN_FILE={vcpkg path}/scripts/buildsystems/vcpkg.cmake`参数指定 vcpkg 的 CMake 配置文件。
+
+即 `cmake -S {repo path} -B {build path} -DCMAKE_TOOLCHAIN_FILE={vcpkg path}/scripts/buildsystems/vcpkg.cmake`
+
+项目的其他依赖还包括：
+
+- [Vulkan SDK](https://vulkan.lunarg.com/sdk/home)
+- [Python3](https://www.python.org/)
+
+请确保你的环境中已经安装了这些依赖项。
+
 ## 任务
 
 ### 1、创建分叉（Fork）并提交 PR （Pull Request）【10 pts】
