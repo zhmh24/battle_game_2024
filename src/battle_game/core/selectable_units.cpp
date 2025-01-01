@@ -22,7 +22,8 @@ void GameCore::GeneratePrimaryUnitList() {
    * TODO: Add Your Unit Here!
    * */
   ADD_SELECTABLE_UNIT(unit::Tank);
-
+  ADD_SELECTABLE_UNIT(unit::Elysia214);
+  
   unit.reset();
 }
 }  // namespace battle_game
