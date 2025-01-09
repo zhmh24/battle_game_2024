@@ -75,6 +75,18 @@ Elysia214::Elysia214(GameCore *game_core, uint32_t id, uint32_t player_id)
           mgr->RegisterModel(turret_vertices, turret_indices);
     }
   }
+   if (!~life_bar_model_index)
+  {
+    auto mgr = AssetsManager::GetInstance();
+    {
+      life_bar_model_index = mgr->RegisterModel(
+          {{{-0.5f, 0.08f}, {0.0f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}},
+           {{-0.5f, -0.08f}, {0.0f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}},
+           {{0.5f, 0.08f}, {0.0f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}},
+           {{0.5f, -0.08f}, {0.0f, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}}},
+          {0, 1, 2, 1, 2, 3});
+    }
+  }
 }
 
 void Elysia214::Render() {
@@ -86,10 +98,10 @@ void Elysia214::Render() {
   battle_game::DrawModel(tank_turret_model_index);
 }
 
-//void Elysia214::RenderHelper() {
+void Elysia214::RenderHelper() {
   
     
-    /*auto parent_unit = game_core_->GetUnit(id_);
+    auto parent_unit = game_core_->GetUnit(id_);
     auto pos = parent_unit->GetPosition() + lifebar_offset_;
     pos += glm::vec2{0.0f, 0.2f};
 
@@ -99,20 +111,20 @@ void Elysia214::Render() {
 
   SetTransformation(pos, 0.0f, {lifebar_length_, 1.0f});
   SetColor(backround_engbar_color_); 
-  SetTexture(0);*/
-  //DrawModel(life_bar_model_index);
+  SetTexture(0);
+  DrawModel(life_bar_model_index);
 
   
-  /*SetTransformation(pos - shift_eng, 0.0f, {lifebar_length_ * energy_percentage, 1.0f});
+  SetTransformation(pos - shift_eng, 0.0f, {lifebar_length_ * energy_percentage, 1.0f});
   if(status==CHARGE){
     SetColor(glm::vec4{0.0f, 0.0f, 1.0f, 1.0f});
 
   }else{
   SetColor(glm::vec4{1.0f, 1.0f, 0.0f, 1.0f});  
   }
-  DrawModel(life_bar_model_index);*/
+  DrawModel(life_bar_model_index);
   
-//}
+}
 
 
 

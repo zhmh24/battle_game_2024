@@ -7,7 +7,7 @@ class Elysia214 : public Unit {
   Elysia214(GameCore *game_core, uint32_t id, uint32_t player_id);
   void Render() override;
   void Update() override;
-  //void RenderHelper() override;
+  void RenderHelper() override;
   [[nodiscard]] bool IsHit(glm::vec2 position) const override;
 
  protected:
